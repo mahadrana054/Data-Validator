@@ -53,27 +53,37 @@ def filling_values(df):
 
 def date_format(df):
     column_name = input("Enter column name for date formatting : ").lower()
-    df.columns = df.columns.str.lower()
+    df.columns = df.columns.str.lower()  
 
-    try:
-        if column_name in df.columns:    
-            df[column_name] = pd.to_datetime(df[column_name], errors='raise')  # Will raise an error if not convertible
+    if column_name in df.columns:
+        try:
+            df[column_name] = pd.to_datetime(df[column_name], errors='raise')  
             print(f"Column '{column_name}' has been successfully converted to uniform date format.")
-            df[column_name]
-        else:
-            print(f"{column_name} column not exist")
-            print(f"You might done typo error")
-    except (ValueError, TypeError, KeyError):
-        print(f"Column '{column_name}' does not contain valid date values. Changes have been undone.")
-        
-    return df 
+            print(df[column_name])
+        except (ValueError, TypeError) as e:
+            print(f"Error: Column '{column_name}' does not contain valid date values. Changes have been undone.")
+            print(f"Details: {e}")
+    else:
+        print(f"Column '{column_name}' does not exist.")
+        print(f"You might have made a typo.")
+  
+
 def duplicate_remover(df):
     duplicates = df[df.duplicated()]
     if duplicates.empty:
         print("Your data doesnot contain any duplicates")
     else:
-        df = df.drop_duplicates().reset_index(drop=True)
-        print(df)
+        user_input = input("Do you want to delete duplicates permanently : ").lower()
+        if user_input == "yes":
+            df.drop_duplicates(inplace=True) 
+            df.reset_index(drop=True, inplace=True)  
+            print("Duplicates removed permanently.")
+            print(df)
+        elif user_input == "no":
+            df.drop_duplicates(inplace=False) 
+            df.reset_index(drop=True, inplace=True)  
+            print("Duplicates removed temporarily.")
+            print(df)
 def column_formatting(df):
     df.columns = df.columns.str.lower()
     df.columns = df.columns.str.replace(" ", "_", regex=False)

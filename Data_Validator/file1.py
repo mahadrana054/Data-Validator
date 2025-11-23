@@ -1,0 +1,81 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from file2 import column_checking, column_dtyping, duplicate_finding, missing_values
+from file3 import filling_values, date_format, duplicate_remover, column_formatting, outlier_detection
+print("*** WELCOME TO DATA VALIDATOR***")
+print("Please type complete filename with extension")
+while True:
+    try:
+        file_name = input("Enter your file name : ").lower()
+        if file_name.endswith(".csv"):
+            file = pd.read_csv(file_name)
+        elif file_name.endswith(".json"):
+            file = pd.read_json(file_name)
+        elif file_name.endswith(".xlsx"):
+            file = pd.read_excel(file_name)
+        else:
+            print("Unsupported file type. Please enter .csv, .xlsx, or .json")
+            continue
+        print("File loaded successfully!")
+        break
+    except FileNotFoundError:
+            print("❌ File not found. Please check the filename and try again.")
+    except Exception as e:
+            print("❌ An error occurred:", e)
+df = file
+while True:
+    print("1. Automatic Data Validation")
+    print("2. Data Cleaning")
+    print("3. Exit")
+    user_input = int(input("Which action do you want to perform : "))
+    
+    if user_input == 1:
+        print("1. Check required columns")
+        print("2. Check dtype mismatches")
+        print("3. Find duplicates")
+        print("4. Detect missing values")
+        print("5. Exit")
+        user_select1 = int(input("Select specific action : "))
+        
+        match user_select1:
+            case 1:
+                column_checking(df)
+            case 2:
+                column_dtyping(df)
+            case 3:
+                duplicate_finding(df)
+            case 4:
+                missing_values(df)
+            case 5:
+                break  # Assuming you want to exit when the user selects 5
+                
+    elif user_input == 2:
+        print("1. Handle Missing")
+        print("2. Date to uniform format")
+        print("3. Remove Duplicates")
+        print("4. Column standardizing")
+        print("5. Outlier detection")          
+        print("6. Exit")          
+        user_select2 = int(input("Select specific action : "))
+        
+        match user_select2:
+            case 1:
+                filling_values(df)
+            case 2:
+                date_format(df)  
+            case 3:
+                 duplicate_remover(df)
+            case 4:
+                 column_formatting(df)
+            case 5:
+                outlier_detection(df)
+            case 6:
+                break
+    elif user_input == 3:
+        break  
+              
+                      
+
+
+

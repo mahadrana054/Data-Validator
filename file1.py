@@ -61,7 +61,7 @@ while True:
         
         match user_select2:
             case 1:
-                filling_values(df)
+                filling_values(df) 
             case 2:
                 date_format(df)  
             case 3:
