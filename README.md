@@ -28,8 +28,6 @@ Just load your file → choose actions → get instant validation or cleaning re
 12. Detect outliers
 
 ## Example Interactive Session
-Below the main script is presented as logical blocks. After each block you will find a plain-English explanation of what it does and why.
-### Imports and helper-function imports
 ```python
 *** WELCOME TO DATA VALIDATOR***
 Please type complete filename with extension
@@ -50,6 +48,8 @@ Select specific action : 4
 # ... program runs missing_values(df) and returns a report or prints results
 ```
 ## Code Walkthrough
+Below the main script is presented as logical blocks. After each block you will find a plain-English explanation of what it does and why.
+### Imports and helper-function imports
 ```python
 import pandas as pd
 import numpy as np
