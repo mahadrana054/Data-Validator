@@ -1,3 +1,34 @@
-# DATA VALIDATOR
-Simple, CLI-based data cleaning and validation tool — for CSV, JSON and Excel files.
-Data Validator loads a file into a pandas DataFrame, runs quick automatic checks (required columns, dtype mismatches, duplicates, missing values) and provides a set of cleaning actions (fill missing values, unify date formats, remove duplicates, standardize columns, detect outliers). This README explains the project, how to run it, and — as requested — breaks the main script into logical code blocks and explains each block in plain English
+# 📊 Data Validator
+A simple and friendly CLI-based tool that helps you clean and validate data from CSV, JSON, and Excel files.
+Just load your file → choose actions → get instant validation or cleaning results. 🚀
+
+## 🧩 Features
+📥 Load .csv, .json, .xlsx
+
+🔍 Automatic validation:
+
+🏷️ Required column check
+
+🔢 Dtype mismatch detection
+
+🔁 Duplicate finder
+
+⚠️ Missing value detector
+
+🧼 Cleaning tools:
+
+🩹 Handle missing values
+
+🗓️ Fix and standardize date formats
+
+🚫 Remove duplicates
+
+🏗️ Standardize column names
+
+📈 Detect outliers
+
+## 📦 Requirements
+
+Install these packages:
+
+pip install pandas numpy matplotlib
