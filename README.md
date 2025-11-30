@@ -131,7 +131,7 @@ if user_input == 1:
         case 5:
             break                     # Exit this menu
 ```
-The functions that eare used in the main.py file are defined in functions(1).py and functions(2).py files.
+The functions that are used in the main.py file are defined in functions(1).py and functions(2).py files.
 
 
 
