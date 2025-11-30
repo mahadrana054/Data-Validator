@@ -51,20 +51,24 @@ Select specific action : 4
 Below the main script is presented as logical blocks. After each block you will find a plain-English explanation of what it does and why.
 ### Imports and helper-function imports
 ```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+import pandas as pd           # For reading and handling data
+import numpy as np            # For numerical operations
+import matplotlib.pyplot as plt   # For visualization (if needed)
+
+# Importing functions from other project files
 from file2 import column_checking, column_dtyping, duplicate_finding, missing_values
 from file3 import filling_values, date_format, duplicate_remover, column_formatting, outlier_detection
-
 ```
 ### Welcome prompt and file selection loop
 ```python
 print("*** WELCOME TO DATA VALIDATOR***")
 print("Please type complete filename with extension")
+
 while True:
     try:
-        file_name = input("Enter your file name : ").lower()
+        file_name = input("Enter your file name : ").lower()  # Convert to lowercase for easy matching
+        
+        # Load file based on extension
         if file_name.endswith(".csv"):
             file = pd.read_csv(file_name)
         elif file_name.endswith(".json"):
@@ -74,30 +78,35 @@ while True:
         else:
             print("Unsupported file type. Please enter .csv, .xlsx, or .json")
             continue
+        
         print("File loaded successfully!")
         break
-    except FileNotFoundError:
-            print("❌ File not found. Please check the filename and try again.")
-    except Exception as e:
-            print("❌ An error occurred:", e)
-df = file
 
+    except FileNotFoundError:
+        print("❌ File not found. Please check the filename and try again.")
+    except Exception as e:
+        print("❌ An error occurred:", e)
+
+df = file   # Store loaded data
 ```
 ### Main menu loop (top-level actions)
 ```python
 while True:
+    # Display main operations
     print("1. Automatic Data Validation")
     print("2. Data Cleaning")
     print("3. Exit")
+
     user_input = int(input("Which action do you want to perform : "))
     
     if user_input == 1:
+        # Go to validation menu
         ...
     elif user_input == 2:
+        # Go to cleaning menu
         ...
     elif user_input == 3:
-        break
-
+        break   # Exit program
 ```
 ### Automatic Data Validation submenu
 ```python
@@ -107,21 +116,22 @@ if user_input == 1:
     print("3. Find duplicates")
     print("4. Detect missing values")
     print("5. Exit")
+
     user_select1 = int(input("Select specific action : "))
     
     match user_select1:
         case 1:
-            column_checking(df)
+            column_checking(df)       # Check if required columns exist
         case 2:
-            column_dtyping(df)
+            column_dtyping(df)        # Detect dtype mismatches
         case 3:
-            duplicate_finding(df)
+            duplicate_finding(df)     # Find duplicate rows
         case 4:
-            missing_values(df)
+            missing_values(df)        # Show missing values
         case 5:
-            break
-
+            break                     # Exit this menu
 ```
+The functions that eare used in the main.py file are defined in functions(1).py and functions(2).py files.
 
 
 
